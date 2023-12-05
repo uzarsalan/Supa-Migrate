@@ -14,7 +14,7 @@ case "$(uname)" in
   Darwin*) sedi=(-i "")
 esac
 
-PGSSLMODE=allow pg_dump postgres://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@"$POSTGRES_HOST":5432/"$POSTGRES_DATABASE" \
+PGSSLMODE=allow pg_dump postgres://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@"$POSTGRES_HOST":25060/"$POSTGRES_DATABASE" \
   --clean \
   --if-exists \
   --quote-all-identifiers \
@@ -23,8 +23,7 @@ PGSSLMODE=allow pg_dump postgres://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@"$P
   --exclude-schema 'extensions|graphql|graphql_public|net|tiger|pgbouncer|vault|realtime|supabase_functions|storage|pg*|information_schema' \
   --schema '*' > dump.sql
 
-PGSSLMODE=allow pg_dump postgres://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@"$POSTGRES_HOST":5432/"$POSTGRES_DATABASE" \
-  --clean \
+PGSSLMODE=allow pg_dump postgres://"$POSTGRES_USERNAME":"$POSTGRES_PASSWORD"@"$POSTGRES_HOST":25060/"$POSTGRES_DATABASE" \
   --if-exists \
   --quote-all-identifiers \
   --no-owner --no-privileges \
